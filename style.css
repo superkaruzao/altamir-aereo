@@ -15,30 +15,38 @@ body {
 
 .header-container {
     background: black;
-    padding: 6em 2em;
+    padding: 4em 2em;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .header-wrapper {
-    margin: 0 auto;
-    max-width: 1200px;
+    /* margin: 0 auto;
+    max-width: 1200px; */
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 3em;
+    align-self: flex-start;
 }
 
 .logo {
     flex: 1 1 250px;
     display: flex;
     justify-content: center;
+    max-width: 250px;
+    align-self: flex-start;
 }
 
 .header-content {
     flex: 2 1 500px;
     color: #fff;
+}
+
+.header-title {
+    padding-right: 30rem;
 }
 
 .header-title h3 {
@@ -54,7 +62,8 @@ body {
     color: #ccc;
     font-size: 1.15em;
     font-weight: 300;
-    line-height: 1.7;
+    line-height: 1.2;
+    padding-right: 40rem;
     margin-bottom: 1.5em;
 }
 
@@ -75,7 +84,7 @@ body {
     flex-direction: column;
     gap: 15px;
     margin-top: 1.5em;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .header-button img {
@@ -347,12 +356,9 @@ body {
 
 .footer-info {
     max-width: 400px;
-}
-
-.logo {
-    width: 250px;
-    display: block;
-    margin: 0 auto 20px;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-info p,
@@ -382,21 +388,19 @@ body {
     max-width: 1100px;
     margin: auto;
     overflow: hidden;
+    padding: 0 20px 0 60px;
+    ;
 }
 
 .avaliacoes-slider {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    gap: 24px;
+    transition: transform 0.5s;
 }
 
 .avaliacoes-slide {
     min-width: 100%;
     box-sizing: border-box;
-    padding: 40px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
 }
 
 .avaliacoes-card {
@@ -405,8 +409,9 @@ body {
     max-width: 32%;
     background: #f7f7f7;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 16px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 350px;
 }
 
 .avaliacoes-card h3 {
@@ -560,6 +565,14 @@ details[open] .faq-summary .caret {
     margin: 0;
 }
 
+@media (min-width: 1024px) {
+    .avaliacoes-slide {
+        min-width: calc(33.333% - 16px);
+        /* 3 slides por vez, ajuste o gap se quiser */
+        max-width: calc(33.333% - 16px);
+    }
+}
+
 @media (max-width: 1024px) {
     .header-container {
         display: flex;
@@ -579,6 +592,27 @@ details[open] .faq-summary .caret {
     .about-container {
         padding: 50px 10px;
     }
+
+    .passo-container .passo-conteudo .passo-items {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* empilha em 1 coluna */
+        gap: 16px;
+        justify-items: center;
+        /* centraliza conteúdo dentro de cada célula */
+        align-items: start;
+    }
+
+    .passo-container .passo-conteudo .passo-item {
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    .passo-container .passo-conteudo .passo-numero span {
+        font-size: clamp(2.5rem, 12vw, 6rem);
+        /* evita números gigantes no mobile */
+        -webkit-text-stroke: 1.5px white;
+    }
 }
 
 @media (max-width: 600px) {
@@ -588,13 +622,19 @@ details[open] .faq-summary .caret {
         flex-direction: column;
     }
 
+    .header-title {
+        padding: 0;
+    }
+
     .header-title h3 {
-        font-size: 1.2em;
-        text-align: justify;
+        font-size: 1.1em;
+        text-align: left;
+        padding: 0;
     }
 
     .header-title p {
         text-align: justify;
+        padding: 0;
     }
 
     .header-wrapper {
@@ -607,8 +647,13 @@ details[open] .faq-summary .caret {
         padding: 0 0.5em;
     }
 
+    .header-button {
+        align-items: center;
+    }
+
     .logo {
         max-width: 300px;
+        align-self: center;
     }
 
     .services-container {
@@ -660,6 +705,7 @@ details[open] .faq-summary .caret {
     .footer-info p,
     .footer-info a {
         font-size: 15px;
+        text-align: left;
     }
 
     .avaliacoes-slide {
@@ -713,6 +759,10 @@ details[open] .faq-summary .caret {
         font-size: clamp(2.5rem, 12vw, 6rem);
         /* evita números gigantes no mobile */
         -webkit-text-stroke: 1.5px white;
+    }
+    
+    .whatsapp-button {
+        margin: 30px 0;
     }
 }
 

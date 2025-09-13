@@ -2,34 +2,49 @@ const avaliacoesSlider = document.querySelector('.avaliacoes-slider');
 const avaliacoesSlides = document.querySelectorAll('.avaliacoes-slide');
 let avaliacoesIndex = 0;
 
+function getSlidesPerView() {
+    return window.innerWidth >= 1024 ? 3 : 1;
+}
+
 function avaliacoesShowSlide(i) {
-  if (i < 0) avaliacoesIndex = avaliacoesSlides.length - 1;
-  else if (i >= avaliacoesSlides.length) avaliacoesIndex = 0;
-  else avaliacoesIndex = i;
-  avaliacoesSlider.style.transform = `translateX(${-avaliacoesIndex * 100}%)`;
+    const slidesPerView = getSlidesPerView();
+    const maxIndex = Math.max(0, avaliacoesSlides.length - slidesPerView);
+
+    if (i < 0) avaliacoesIndex = maxIndex;
+    else if (i > maxIndex) avaliacoesIndex = 0;
+    else avaliacoesIndex = i;
+
+    const slide = avaliacoesSlides[0];
+    const slideWidth = slide.offsetWidth + 24; // 24px gap (ajuste se necessário)
+    avaliacoesSlider.style.transition = 'transform 0.5s';
+    avaliacoesSlider.style.transform = `translateX(-${avaliacoesIndex * slideWidth}px)`;
 }
 
 function avaliacoesPrevSlide() {
-  avaliacoesShowSlide(avaliacoesIndex - 1);
+    avaliacoesShowSlide(avaliacoesIndex - 1);
 }
 
 function avaliacoesNextSlide() {
-  avaliacoesShowSlide(avaliacoesIndex + 1);
+    avaliacoesShowSlide(avaliacoesIndex + 1);
 }
 
+window.addEventListener('resize', () => {
+    avaliacoesShowSlide(avaliacoesIndex);
+});
+
+// Touch events only on mobile
 function isMobile() {
-    return window.innerWidth <= 600;
+    return window.innerWidth < 900;
 }
 
 let startX = 0;
 let currentTranslate = 0;
 let isDragging = false;
 
-const slider = document.querySelector('.avaliacoes-slider');
-const slides = document.querySelectorAll('.avaliacoes-slide');
+const slider = avaliacoesSlider;
+const slides = avaliacoesSlides;
 const slideCount = slides.length;
 
-// Touch events only on mobile
 if (isMobile()) {
     slider.addEventListener('touchstart', (e) => {
         isDragging = true;
@@ -58,3 +73,7 @@ if (isMobile()) {
         slider.style.transition = 'transform 0.5s';
     });
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+    avaliacoesShowSlide(0);
+});
