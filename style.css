@@ -214,10 +214,10 @@ body {
 }
 
 .passo-container .passo-conteudo .passo-items .passo-item .passo-numero span {
-    color: #fff;
+    color: #000;
     font-weight: 600;
     font-size: 20em;
-    text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
 .passo-container .passo-conteudo .passo-items .passo-item .passo-texto.mt {
