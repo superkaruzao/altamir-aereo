@@ -1,16 +1,8 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-family: "DM Sans", sans-serif;
     margin: 0;
     padding: 0;
     color: #333;
-    /* background-color: #fafafa; */
-    line-height: 1.6;
 }
 
 .header-container {
@@ -67,7 +59,6 @@ body {
     font-weight: 300;
     line-height: 1.2;
     margin-bottom: 1.5em;
-    width: 60%;
 }
 
 .header-rating {
@@ -192,7 +183,7 @@ body {
 }
 
 .passo-container {
-    background: linear-gradient(180deg, #0a0a0a 0%, #1c1c1c 100%);
+    background: #000;
     padding: 4em 1em;
 }
 
@@ -226,7 +217,7 @@ body {
     color: #fff;
     font-weight: 600;
     font-size: 20em;
-    text-shadow: 2px 0 white, -2px 0 white, 0 2px white, 0 -2px white, 1px 1px white, -1px -1px white, 1px -1px white, -1px 1px white;
+    text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
 }
 
 .passo-container .passo-conteudo .passo-items .passo-item .passo-texto.mt {
@@ -234,7 +225,7 @@ body {
 }
 
 .passo-container .passo-conteudo .passo-items .passo-item .passo-texto span {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #fff;
     color: white;
     display: inline-block;
     font-weight: 600;
@@ -262,7 +253,7 @@ body {
 
 .protect-title h3 {
     color: black;
-    font-size: 2.2rem;
+    font-size: 1.2rem;
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
@@ -292,7 +283,7 @@ body {
     color: black;
     font-size: 1.1rem;
     line-height: 1.8;
-    text-align: justify;
+    text-align: center;
 }
 
 .protect-texts p::after {
@@ -343,34 +334,48 @@ body {
     color: #e0e0e0;
     font-size: 1.1rem;
     line-height: 1.8;
-    text-align: justify;
-}
-
-.footer-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    padding: 6rem 2rem;
-    background-color: black;
-    flex-wrap: wrap;
     text-align: center;
 }
 
-.footer-info {
-    max-width: 400px;
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
+.footer-container {
+    background-color: #000;
+    padding: 4em 1em;
 }
 
-.footer-info p,
-.footer-info a {
-    display: block;
-    margin: 8px 0;
-    color: white;
-    font-size: 18px;
+.footer-wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.footer-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.footer-item h3 {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.footer-links {
+    display: grid;
+    gap: 20px;
+}
+
+.footer-links a {
+    align-items: center;
+    color: #fff;
+    display: flex;
+    gap: 10px;
     text-decoration: none;
+}
+
+.map iframe {
+    border: 0;
+    height: 300px;
+    width: 100%;
 }
 
 .avaliacoes {
@@ -516,7 +521,6 @@ summary.faq-summary::-webkit-details-marker {
     height: 8px;
     border-radius: 50%;
     background: #22d3ee;
-    margin-right: 0.5rem;
 }
 
 .faq-summary .caret {
@@ -599,16 +603,19 @@ details[open] .faq-summary .caret {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .header-container {
-        padding: 2em 0.5em;
-        display: flex;
-        flex-direction: column;
+        padding: 4em 1em;
         background-image: url("/assets/altamir-mobile.jpg");
+    }
+
+    .header-content {
         width: 100%;
-        justify-content: center;
-        align-items: center;
-        background-size: cover;
+    }
+
+    .header-title img {
+        display: block;
+        margin: 0 auto;
     }
 
     .header-title {
@@ -617,15 +624,12 @@ details[open] .faq-summary .caret {
     }
 
     .header-title h3 {
-        font-size: 1.1em;
-        text-align: left;
-        padding: 0;
+        font-size: 1.8em;
+        text-align: center;
     }
 
     .header-title p {
-        text-align: left;
-        padding: 0;
-        width: 98%;
+        font-size: 1.2em;
     }
 
     .header-wrapper {
@@ -684,9 +688,16 @@ details[open] .faq-summary .caret {
         font-size: 0.95em;
     }
 
-    .footer-container {
-        gap: 16px;
-        padding: 2em 0.5em 4rem;
+    .footer-item h3 {
+        text-align: center;
+    }
+
+    .footer-items {
+        grid-template-columns: 1fr;
+    }
+
+    .map iframe {
+        margin-top: 2rem;
     }
 
     .logo {
@@ -742,7 +753,7 @@ details[open] .faq-summary .caret {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
 
     .header-container {
         background-image: url("/assets/altamir-mobile.jpg");
